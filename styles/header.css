@@ -1,0 +1,168 @@
+.cabeçalho__menu-hamburguer{
+    width: 24px;
+    height: 24px;
+    background-image: url("../img/Menu.svg");/*quando se bota pontos, serve para voltar e procurar a imagem, e precis do url qunaod é background image*/
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+}
+
+.container__botao:checked ~ .container__rotulo > .cabeçalho__menu-hamburguer{/*o tio prcura um elemento que esteja em seguida dele, depois que ele encontrou, o sinal de mais > ele vai procurar dentro da proxima classe do lado. e o checked é um pseudo classe*/ 
+    background-image: url(../img/menu_black_24dp\ 1.svg);
+}
+
+.container__botao:checked ~.container__rotulo{
+    background: var(--azul-degrade);
+}
+
+.cabeçalho{
+    background-color: var(--branco);
+    display: flex;/*tranformei o cabeçalho em um flex container, e o seus filhos viraram itens do flex, e todos ficaram umd o lado do outro*/
+    justify-content: space-between;/*e o justify content between joga para os cantos, e o justify-content serve para definir pro navegador como que os itens ficaram distribuidos pela a tela*/
+    align-items: center;/*é acionado atraves do fisplay fkex e serve para especificar o alinhamento dos itens dentro de um cotainer*/
+    position: relative;/*ele libera outras funçoes para ele como o top, o right, que sao funções de movimentos*/
+}
+
+.container{
+    display: flex;
+    align-items: center;
+}
+
+.container__imagem{
+    padding: 1em;
+}
+
+.lista-menu{
+    display: none;
+    position: absolute;/*o relative libera a movimentação, e o absolute diz que ele vai todo junto*/
+    top: 100%;
+    width: 60vw;
+}
+
+.container__botao:checked~.lista-menu{/*botei a class que eu quero mecher, e dps eu botei o chekead, que é uma pseudo class, 
+a onde ele detecta se eu apertei no botao, e dps botei um ~ele é um conbinador no css, a onde ele conecta a ação anterior a essa, 
+logo, apertou no botao, ele conecta com a proxima ação, que é, se o botao estiver cheado, ele vai procurar outra class e vai botar um display bloc nele*/
+    display: block;
+}
+
+.lista-menu__titulo, 
+.lista-menu__item{
+    padding: 1em;
+    background-color: var(--branco);
+}
+
+.lista-menu__titulo{
+    color: var(--laranja);/*mudar cor de fonte é a tag color*/
+    font-weight: 700;
+}
+
+.lista-menu__link{
+    background: var(--azul-degrade);/*cor degrade*/
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;/*faz funcionar a cor apenas no texto, no caso o degrade*/
+    text-transform: uppercase;/*deixa os nomes mausculo*/
+}
+
+.container__botao{
+    display: none;
+}
+
+.container__titulo{
+    display: none;/*aqui eu estou dizendo que o container titulo que é uma classe que so deve aparecer no pc, nao apareça maisn, fique como none, display nao existe*/
+}
+
+.opcoes{
+    display: none;
+}
+
+.container__texto{
+    display: none;
+}
+
+@media screen and (min-width: 1024px){/* o min-width é usado quando é feito pelo o mobile fist, que é começar pelo o mobile e ir aumentando a tela, e quando é feito pelo o desktop fist, e quando é feito primeiro pelo o pc e vai indo pro mobile, entao tem que ser usado o max-width*/
+    .container__titulo, .container__titulo--negrito{
+        font-family: var(--fonte-secundario);
+        font-size: 30px;
+    }
+
+    .container__titulo{
+        font-weight: 400;
+        display: block;
+    }
+
+    .container__titulo--negrito{
+        font-weight: bold;
+    }
+
+    .opcoes{
+        display: flex;/*deixei as listas uma do lado da outra*/
+    }
+
+    .opcoes__itens{
+        padding: 0 1em;/*deixei as listas uma do lado da outra*/
+        text-transform: uppercase;/*deixei maiuscula*/
+    }
+
+    .opcoes__link{
+        text-decoration: none;
+        color: var(--preto);
+    }
+
+    .container__imagem-transparent{
+        display: none;/*aqui eu estou dizendo para a aba de favoritos ou o coração nao exista, nao apareça no display*/
+    }
+
+    .cabeçalho__menu-hamburguer{
+        display: none;/*tirei o menu interativo*/
+    }
+
+    .opcoes__botao:checked ~ .lista-menu{/*botei para quando o botao estiver checado, ira aparecer a lista menu*/
+        display: block;/*liberação da lista menu logo em baixo*/
+        width: auto;/*preencehndo o tamanho automaticamente do bloco com o nome categorias*/
+    }
+
+    .opcoes__botao{
+        display: none;/*tirei o simbulo do cheackd e o botaozin*/
+    }
+
+    .opcoes__botao:checked ~ .opcoes__rotulo > .opcoes__itens{
+        background: var(--azul-degrade);
+        color: var(--branco);
+    }
+
+    .opcoes__itens{
+        padding: 2em 1em;
+    }
+
+    .lista-menu__item:hover{
+        background: var(--azul-degrade);
+    }
+
+    .lista-menu__item:hover > .lista-menu__link{
+        -webkit-text-fill-color: var(--branco);
+        text-decoration: none;
+    }
+    
+}
+
+@media screen and (min-width: 1728px){
+    .container__link{
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: var(--preto);
+    }
+
+    .cabeçalho{
+        padding: 0 2em;
+    }
+
+    .opcoes{
+        margin-right: auto;/*peguei as opções de cima e joguei tudo para a esquerda com o auto, que é quando nao se tem nenhum espaço ele preenche com uma margem para a direita, empurrando tudo para a esquerda*/
+    }
+
+    .container__texto{
+        display: block;
+    }
+}
